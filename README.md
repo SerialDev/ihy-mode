@@ -4,7 +4,7 @@ Hy inferior mode repl support
 # Installation:
 
 ```
-pip3 install inim
+pip3 install hy
 ```
 
 # Obligatory gif -- WIP 
