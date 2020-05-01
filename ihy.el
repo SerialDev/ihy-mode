@@ -34,7 +34,7 @@
   (progn
     (maintain-indentation (ihy-split "\n"
 				      (get-last-sexp)) 0)
-    (comint-send-string ihy-shell-buffer-name ";\n")
+    (comint-send-string ihy-shell-buffer-name "\n")
   ))
 
 (defun regex-match ( regex-string string-search match-num )

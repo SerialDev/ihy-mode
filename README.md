@@ -9,7 +9,7 @@ pip3 install inim
 
 # Obligatory gif -- WIP 
 
-<!-- ![image info](/img/repl.gif) -->
+![image info](/img/ihy.gif)
 
 
 
