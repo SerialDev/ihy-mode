@@ -40,5 +40,6 @@ C-c C-p [Start repl]
 C-c C-b [Eval buffer]
 C-c C-l [Eval line]
 C-c C-r [eval region]
+C-c C-s [eval last sexp]
 ```
 

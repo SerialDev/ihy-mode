@@ -14,6 +14,29 @@
 ;; Usage
 
 
+(defun get-last-sexp (&optional bounds)
+  "Return the sexp preceding the point."
+  (interactive)
+  (let ((points     (save-excursion
+           (list (point)
+                 (progn (backward-sexp 1)
+                        (skip-chars-forward "[:blank:]")
+                        (when (looking-at-p "\n") (forward-char 1))
+                        (point)))) ))
+    (buffer-substring-no-properties  (car points) (cadr points) )
+  ))
+
+
+(defun ihy-eval-last-sexp (begin end)
+  "Evaluate last sexp."
+  (interactive "r")
+  (ihy t)
+  (progn
+    (maintain-indentation (ihy-split "\n"
+				      (get-last-sexp)) 0)
+    (comint-send-string ihy-shell-buffer-name ";\n")
+  ))
+
 (defun regex-match ( regex-string string-search match-num )
   (string-match regex-string string-search)
   (match-string match-num string-search))
@@ -252,6 +275,7 @@ See `comint-prompt-read-only' for details."
   (define-key hy-mode-map (kbd "C-c C-b") #'ihy-eval-buffer)
   (define-key hy-mode-map (kbd "C-c C-r") #'ihy-eval-region)
   (define-key hy-mode-map (kbd "C-c C-l") #'ihy-eval-line)
+  (define-key hy-mode-map (kbd "C-c C-s") #'ihy-eval-last-sexp)
   (define-key hy-mode-map (kbd "C-c C-p") #'ihy))
 
 ;;;###autoload
